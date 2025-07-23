@@ -2,9 +2,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+var apiBaseUrl = builder.Configuration.GetValue<string>("PortfolioApiBaseUrl");
+
 builder.Services.AddHttpClient<WebAppRazor.Services.PortfolioApiClient>(client =>
 {
-    client.BaseAddress = new Uri("http://webapi");
+    var baseAddress = string.IsNullOrEmpty(apiBaseUrl) ? "http://webapi" : apiBaseUrl;
+    client.BaseAddress = new Uri(baseAddress);
 });
 
 // Add services to the container.

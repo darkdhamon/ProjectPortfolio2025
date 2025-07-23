@@ -31,3 +31,12 @@ dotnet ef migrations add InitialCreate --project ProjectPortfolio/Model --startu
 
 Migrations will be placed in the `Model` project and can be applied with
 `dotnet ef database update`.
+
+## Local debugging
+
+When running the solution from Visual Studio, start both the `WebAPI` and
+`WebAppRazor` projects using their HTTPS profiles. The API listens on
+`https://localhost:7130` while the web app runs on `https://localhost:7177`.
+`WebAppRazor` reads the API endpoint from the `PortfolioApiBaseUrl`
+configuration value, which is preconfigured in
+`WebAppRazor/appsettings.Development.json` for local debugging.
