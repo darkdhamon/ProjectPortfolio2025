@@ -5,7 +5,7 @@ namespace Model.Repositories;
 
 public class Repository<T> : IRepository<T> where T : AEntity
 {
-    private readonly PortfolioContext _context;
+    protected readonly PortfolioContext _context;
     private readonly DbSet<T> _dbSet;
 
     public Repository(PortfolioContext context)

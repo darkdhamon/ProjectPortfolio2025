@@ -22,4 +22,10 @@ public class PortfolioApiClient
     {
         return await _client.GetFromJsonAsync<Profile>($"profiles/{id}");
     }
+
+    public async Task<List<Project>> GetProjectsForProfileAsync(int id)
+    {
+        var result = await _client.GetFromJsonAsync<List<Project>>($"profiles/{id}/projects");
+        return result ?? new List<Project>();
+    }
 }
