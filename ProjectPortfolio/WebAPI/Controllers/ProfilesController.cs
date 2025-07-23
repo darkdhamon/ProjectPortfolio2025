@@ -1,9 +1,11 @@
 using Model.Entity;
-using WebAPI.Data;
+using Model.Repositories;
 
 namespace WebAPI.Controllers;
 
 public class ProfilesController : CrudController<Profile>
 {
-    protected override List<Profile> Items => InMemoryData.Profiles;
+    public ProfilesController(IRepository<Profile> repository) : base(repository)
+    {
+    }
 }

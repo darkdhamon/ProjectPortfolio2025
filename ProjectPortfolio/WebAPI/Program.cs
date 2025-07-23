@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Model;
+using Model.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddDbContext<Model.PortfolioContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=portfolio.db"));
+builder.Services.AddRepositories();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

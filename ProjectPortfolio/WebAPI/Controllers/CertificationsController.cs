@@ -1,10 +1,11 @@
 using Model.Entity;
-using WebAPI.Data;
-using System.Collections.Generic;
+using Model.Repositories;
 
 namespace WebAPI.Controllers;
 
 public class CertificationsController : CrudController<Certification>
 {
-    protected override List<Certification> Items => InMemoryData.Certifications;
+    public CertificationsController(IRepository<Certification> repository) : base(repository)
+    {
+    }
 }

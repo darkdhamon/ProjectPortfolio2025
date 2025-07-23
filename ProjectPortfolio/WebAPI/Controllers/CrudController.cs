@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Model.Entity.Abstract;
-using WebAPI.Data;
-using System.Collections.Generic;
-using System.Linq;
+using Model.Repositories;
 
 namespace WebAPI.Controllers;
 
@@ -10,48 +8,52 @@ namespace WebAPI.Controllers;
 [Route("[controller]")]
 public abstract class CrudController<T> : ControllerBase where T : AEntity
 {
-    protected abstract List<T> Items { get; }
+    private readonly IRepository<T> _repository;
+
+    protected CrudController(IRepository<T> repository)
+    {
+        _repository = repository;
+    }
 
     [HttpGet]
-    public ActionResult<IEnumerable<T>> GetAll()
+    public async Task<ActionResult<IEnumerable<T>>> GetAll()
     {
-        return Ok(Items);
+        var items = await _repository.GetAllAsync();
+        return Ok(items);
     }
 
     [HttpGet("{id}")]
-    public ActionResult<T> GetById(int id)
+    public async Task<ActionResult<T>> GetById(int id)
     {
-        var item = Items.FirstOrDefault(e => e.ID == id);
+        var item = await _repository.GetByIdAsync(id);
         return item is null ? NotFound() : Ok(item);
     }
 
     [HttpPost]
-    public ActionResult<T> Create(T item)
+    public async Task<ActionResult<T>> Create(T item)
     {
-        item.ID = InMemoryData.GetNextId(Items);
-        Items.Add(item);
+        await _repository.AddAsync(item);
         return CreatedAtAction(nameof(GetById), new { id = item.ID }, item);
     }
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, T item)
+    public async Task<IActionResult> Update(int id, T item)
     {
-        var existing = Items.FirstOrDefault(e => e.ID == id);
+        var existing = await _repository.GetByIdAsync(id);
         if (existing is null) return NotFound();
 
-        var index = Items.IndexOf(existing);
         item.ID = id;
-        Items[index] = item;
+        await _repository.UpdateAsync(item);
         return NoContent();
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var item = Items.FirstOrDefault(e => e.ID == id);
+        var item = await _repository.GetByIdAsync(id);
         if (item is null) return NotFound();
 
-        Items.Remove(item);
+        await _repository.DeleteAsync(id);
         return NoContent();
     }
 }

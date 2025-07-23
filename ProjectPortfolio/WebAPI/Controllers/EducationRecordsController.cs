@@ -1,10 +1,11 @@
 using Model.Entity;
-using WebAPI.Data;
-using System.Collections.Generic;
+using Model.Repositories;
 
 namespace WebAPI.Controllers;
 
 public class EducationRecordsController : CrudController<EducationRecord>
 {
-    protected override List<EducationRecord> Items => InMemoryData.EducationRecords;
+    public EducationRecordsController(IRepository<EducationRecord> repository) : base(repository)
+    {
+    }
 }

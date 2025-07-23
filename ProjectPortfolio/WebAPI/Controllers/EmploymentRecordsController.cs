@@ -1,10 +1,11 @@
 using Model.Entity;
-using WebAPI.Data;
-using System.Collections.Generic;
+using Model.Repositories;
 
 namespace WebAPI.Controllers;
 
 public class EmploymentRecordsController : CrudController<EmploymentRecord>
 {
-    protected override List<EmploymentRecord> Items => InMemoryData.EmploymentRecords;
+    public EmploymentRecordsController(IRepository<EmploymentRecord> repository) : base(repository)
+    {
+    }
 }
