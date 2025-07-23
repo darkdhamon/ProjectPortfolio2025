@@ -1,10 +1,11 @@
 using Model.Entity;
-using WebAPI.Data;
-using System.Collections.Generic;
+using Model.Repositories;
 
 namespace WebAPI.Controllers;
 
 public class ProjectsController : CrudController<Project>
 {
-    protected override List<Project> Items => InMemoryData.Projects;
+    public ProjectsController(IRepository<Project> repository) : base(repository)
+    {
+    }
 }
