@@ -14,3 +14,25 @@ The `Profile` class includes identity details useful for rendering a portfolio s
 - Lists of employment records, education records, certifications and personal projects
 
 Each project has been updated so that every class resides in its own file.
+
+## Database migrations
+
+The `Model` project includes an EF Core `DbContext` so you can generate a
+database schema using code-first migrations. To add the initial migration run:
+
+```bash
+dotnet ef migrations add InitialCreate --project ProjectPortfolio/Model --startup-project ProjectPortfolio/ProjectPortfolio.AppHost
+```
+
+Migrations will be placed in the `Model` project and can be applied with
+`dotnet ef database update`.
+
+## Data access repositories
+
+The Model project contains a simple repository pattern. `IRepository<T>` defines
+CRUD methods for entities derived from `AEntity`. `EfRepository<T>` implements
+this interface using `PortfolioContext`. The `ProfileRepository` provides a
+custom method for loading a profile with all related entities.
+
+The WebAPI project registers these repositories with dependency injection so
+controllers can depend on abstractions.
