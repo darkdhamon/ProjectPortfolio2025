@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppRazor", "WebAppRazor\WebAppRazor.csproj", "{BD5D98FB-8C1B-4074-9C67-F67024468AC7}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{02BD4357-D1A6-4979-8A52-D1BA55E02C73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{CACAA00A-C1A1-48C9-9FE8-76B6A126A9D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Test Projects", "Unit Test Projects", "{86E29877-538E-417B-B7C6-0A911A7C0B0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPITests", "WebAPITests\WebAPITests.csproj", "{3D767A45-AC55-4AFC-900A-C00147F86B98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +43,15 @@ Global
 		{CACAA00A-C1A1-48C9-9FE8-76B6A126A9D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CACAA00A-C1A1-48C9-9FE8-76B6A126A9D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CACAA00A-C1A1-48C9-9FE8-76B6A126A9D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D767A45-AC55-4AFC-900A-C00147F86B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D767A45-AC55-4AFC-900A-C00147F86B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D767A45-AC55-4AFC-900A-C00147F86B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D767A45-AC55-4AFC-900A-C00147F86B98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D767A45-AC55-4AFC-900A-C00147F86B98} = {86E29877-538E-417B-B7C6-0A911A7C0B0C}
 	EndGlobalSection
 EndGlobal
