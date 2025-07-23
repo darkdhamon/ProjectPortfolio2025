@@ -18,6 +18,36 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// apply database migrations and seed test data on startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<PortfolioContext>();
+    db.Database.Migrate();
+
+    if (!db.Persons.Any())
+    {
+        var person = new Model.Entity.Person
+        {
+            FirstName = "John",
+            LastName = "Doe",
+            Location = "Unknown",
+            ContactEmail = "john@example.com",
+            Phone = "123-456-7890"
+        };
+
+        var profile = new Model.Entity.Profile
+        {
+            Person = person,
+            Title = "Developer",
+            SelfDescription = "Sample portfolio"
+        };
+
+        db.Persons.Add(person);
+        db.Profiles.Add(profile);
+        db.SaveChanges();
+    }
+}
+
 app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
