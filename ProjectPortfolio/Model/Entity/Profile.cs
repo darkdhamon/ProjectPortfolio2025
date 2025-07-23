@@ -4,12 +4,9 @@ namespace Model.Entity;
 
 public class Profile : AEntity
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public int PersonId { get; set; }
+    public Person Person { get; set; }
     public string Title { get; set; }
-    public string Location { get; set; }
-    public string ContactEmail { get; set; }
-    public string Phone { get; set; }
     public string SelfDescription { get; set; }
     public List<EmploymentRecord> EmploymentHistory { get; set; } = new();
     public List<EducationRecord> EducationHistory { get; set; } = new();

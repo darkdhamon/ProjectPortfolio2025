@@ -2,14 +2,19 @@
 
 This repository contains a sample .NET project portfolio. The `Model` project defines entities that describe a person's professional profile, employment history, education and skills.
 
-## Profile model
+## Model overview
 
-The `Profile` class includes identity details useful for rendering a portfolio site:
+Portfolios are now associated with a `Person` so a single person can publish multiple portfolios.
+
+`Person` contains contact information:
 
 - `FirstName` and `LastName`
-- `Title` (professional headline)
 - `Location`
 - `ContactEmail` and `Phone`
+
+`Profile` represents an individual portfolio and references a `Person`. It includes:
+
+- `Title` (professional headline for the portfolio)
 - `SelfDescription` for a short biography
 - Lists of employment records, education records, certifications and personal projects
 
