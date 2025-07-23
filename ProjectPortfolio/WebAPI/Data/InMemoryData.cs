@@ -5,6 +5,7 @@ namespace WebAPI.Data;
 
 public static class InMemoryData
 {
+    public static List<Person> Persons { get; } = new();
     public static List<Profile> Profiles { get; } = new();
     public static List<Project> Projects { get; } = new();
     public static List<Skill> Skills { get; } = new();
