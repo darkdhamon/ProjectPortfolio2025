@@ -12,6 +12,7 @@ public class PortfolioContext : DbContext
     public DbSet<Profile> Profiles => Set<Profile>();
     public DbSet<Person> Persons => Set<Person>();
     public DbSet<EmploymentRecord> EmploymentRecords => Set<EmploymentRecord>();
+    public DbSet<Employer> Employers => Set<Employer>();
     public DbSet<EducationRecord> EducationRecords => Set<EducationRecord>();
     public DbSet<Project> Projects => Set<Project>();
     public DbSet<Skill> Skills => Set<Skill>();

@@ -12,6 +12,7 @@ public static class InMemoryData
     public static List<Certification> Certifications { get; } = new();
     public static List<EducationRecord> EducationRecords { get; } = new();
     public static List<EmploymentRecord> EmploymentRecords { get; } = new();
+    public static List<Employer> Employers { get; } = new();
 
     public static int GetNextId<T>(List<T> items) where T : AEntity
     {
