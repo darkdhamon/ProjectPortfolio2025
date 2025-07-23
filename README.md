@@ -17,6 +17,7 @@ Portfolios are now associated with a `Person` so a single person can publish mul
 - `Title` (professional headline for the portfolio)
 - `SelfDescription` for a short biography
 - Lists of employment records, education records, certifications and personal projects
+- Employment records reference an `Employer` entity so multiple records or client relationships can share the same company details
 
 Each project has been updated so that every class resides in its own file.
 
